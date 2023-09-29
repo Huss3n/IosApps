@@ -81,6 +81,8 @@ struct ContentView: View {
     let correctPassword = "123Hh"
     @State private var availableHours = 2
     @State private var startDate = Date.now
+    @State private var picked = ["20k", "40k", "50k", "80k"]
+    @State private var starter = "40k"
     
     // check password
     func handleClick(){
@@ -108,7 +110,7 @@ struct ContentView: View {
                 .useOnTitles()
             TextField("Enter Password", text: $password)
                 .useOnInputs()
-          
+            
             // available hours
             // stepper
             // has in for the range of the values e.g dont go lower than 4 or higher than 12
@@ -116,7 +118,7 @@ struct ContentView: View {
             // add .formated to format the data e.g remove decimal places
             Stepper("Hours available: \(availableHours)", value: $availableHours, in: 2...8)
                 .useOnDateStepper()
-//                .controlSize(.large)
+            //                .controlSize(.large)
             
             // date to start
             // to only display date we choose displayed components as date
@@ -127,26 +129,37 @@ struct ContentView: View {
             DatePicker("Start Date", selection: $startDate, in: Date.now..., displayedComponents: .date)
                 .useOnDateStepper()
             
-            // login signup button
-            Button(isRegistered ? "Login" : "Signup", action: handleClick)
-                .buttonStyle(.borderedProminent)
-                .padding()
+            // picker
+            HStack{
+                Text("Choose investment amount")
+                Picker("Choose base pay", selection: $starter) {
+                    ForEach(picked, id: \.self){
+                        Text($0)
+                    }
+                }
+            }
+                
+                // login signup button
+                Button(isRegistered ? "Login" : "Signup", action: handleClick)
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                
+                Button(isRegistered ? "Don't have an account? Register" : "Have an account? Login"){
+                    isRegistered.toggle()
+                }
+                .buttonStyle(.bordered)
+            }
+            .padding()
+            .alert(message, isPresented: $showAlert) {
+                Button("Ok"){
+                }
+            }message: {
+                Text("Thank you for signing up")
+            }
             
-            Button(isRegistered ? "Don't have an account? Register" : "Have an account? Login"){
-                isRegistered.toggle()
-            }
-            .buttonStyle(.bordered)
         }
-        .padding()
-        .alert(message, isPresented: $showAlert) {
-            Button("Ok"){
-            }
-        }message: {
-            Text("Thank you for signing up")
-        }
-        
     }
-}
+
 
 #Preview {
     ContentView()
