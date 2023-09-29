@@ -116,6 +116,7 @@ struct ContentView: View {
             // add .formated to format the data e.g remove decimal places
             Stepper("Hours available: \(availableHours)", value: $availableHours, in: 2...8)
                 .useOnDateStepper()
+//                .controlSize(.large)
             
             // date to start
             // to only display date we choose displayed components as date
