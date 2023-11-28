@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct PracticeApp: App {
-    @StateObject private var userDataModel = UserDataModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, userDataModel.container.viewContext)
+            TaskView()
         }
     }
 }
