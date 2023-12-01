@@ -20,7 +20,7 @@ struct NotesView: View {
                 List {
                     ForEach(viewModel.notesByUser)  { note in
                         NavigationLink {
-                            SampleNotesView()
+                            SampleNotesView(selectedNote: note)
                                 .navigationBarBackButtonHidden(true)
                         } label: {
                             ListRowItem(title: note.title, color: listColors.randomElement() ?? .red)
@@ -34,6 +34,7 @@ struct NotesView: View {
                     .onDelete(perform: viewModel.delete)
                 }
                 .listStyle(.plain)
+                .padding()
             }
         }
     }

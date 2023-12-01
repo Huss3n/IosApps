@@ -11,6 +11,7 @@ struct AddView: View {
     @State private var title: String = ""
     @State private var notes: String = ""
     var color: Color = Color("titleColor")
+    @State private var showDiscardAlert: Bool = false
     
     
     @Environment(\.dismiss) var dismiss
@@ -49,6 +50,13 @@ struct AddView: View {
                     
                 }
                 .padding(20)
+                .blur(radius: showDiscardAlert ? 2 : 0)
+                
+                if showDiscardAlert {
+                    withAnimation(.bouncy) {
+                        CustomAlertView(showDiscardAlert: $showDiscardAlert)
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -63,13 +71,17 @@ struct AddView: View {
                                 .foregroundStyle(.white)
                                 .onTapGesture {
                                     // navigate back
-                                    dismiss()
+                                    if title.isEmpty && notes.isEmpty {
+                                        dismiss()
+                                    }else  {
+                                        showDiscardAlert.toggle()
+                                    }
                                 }
                         }
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
+                    HStack(spacing: 20) {
                         Rectangle()
                             .frame(width: 48, height: 48)
                             .foregroundStyle(Color("iconColor"))
@@ -92,7 +104,7 @@ struct AddView: View {
                                     .foregroundStyle(.white)
                             }
                             .onTapGesture {
-                                viewModel.addUserNote(title: title, notes: notes)
+//                                viewModel.addUserNote(title: title, notes: notes)
                                 dismiss()
                             }
                     }
@@ -102,8 +114,14 @@ struct AddView: View {
     }
 }
 
-#Preview {
-    AddView()
-        .environmentObject(NotesViewModel())
+//#Preview {
+//    AddView()
+//        .environmentObject(NotesViewModel())
+//}
+
+struct AddView_Preview: PreviewProvider {
+    static var previews: some View {
+        AddView()
+    }
 }
 

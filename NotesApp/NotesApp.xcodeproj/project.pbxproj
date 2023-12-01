@@ -19,6 +19,7 @@
 		D7D252352B15D87B006EE3F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D252342B15D87B006EE3F0 /* Assets.xcassets */; };
 		D7D252382B15D87B006EE3F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D252372B15D87B006EE3F0 /* Preview Assets.xcassets */; };
 		D7D252402B15D959006EE3F0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2523F2B15D959006EE3F0 /* EmptyView.swift */; };
+		D7E281F82B18B9A80055406E /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E281F72B18B9A80055406E /* CustomAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		D7D252342B15D87B006EE3F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7D252372B15D87B006EE3F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7D2523F2B15D959006EE3F0 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		D7E281F72B18B9A80055406E /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				D762D5E32B15E60E00ECEE7D /* SearchView.swift */,
 				D762D5F52B16397200ECEE7D /* ListRowItem.swift */,
+				D7E281F72B18B9A80055406E /* CustomAlertView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				D762D5F42B162F7800ECEE7D /* SampleNotesView.swift in Sources */,
 				D762D5F22B161C6D00ECEE7D /* RootView.swift in Sources */,
+				D7E281F82B18B9A80055406E /* CustomAlertView.swift in Sources */,
 				D762D5F02B161C2D00ECEE7D /* NotesView.swift in Sources */,
 				D762D5F62B16397200ECEE7D /* ListRowItem.swift in Sources */,
 				D762D5E72B16040200ECEE7D /* AddView.swift in Sources */,

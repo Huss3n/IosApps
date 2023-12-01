@@ -52,11 +52,13 @@ struct RootView: View {
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundStyle(.white)
-                        .padding()
+//                        .padding()
+                        .padding(.top, 20)
+                        .padding(4)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
+                    HStack(spacing: 20) {
                         // MARK: Search
                         Rectangle()
                             .frame(width: 50, height: 50)
@@ -82,7 +84,6 @@ struct RootView: View {
                         
 
                     }
-                    .padding()
                 }
             }
         }

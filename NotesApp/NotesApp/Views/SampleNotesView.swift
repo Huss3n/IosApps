@@ -11,6 +11,14 @@ struct SampleNotesView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: NotesViewModel
     @State private var deleteAlert: Bool = false
+    @State private var editedNotes: String
+    
+    var selectedNote: NotesModel
+    
+    init(selectedNote: NotesModel) {
+         self.selectedNote = selectedNote
+         _editedNotes = State(initialValue: selectedNote.notes)
+     }
     
     var body: some View {
         NavigationStack {
@@ -19,17 +27,20 @@ struct SampleNotesView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    ForEach(viewModel.notesByUser){ note in
-                        Text(note.title)
-                            .font(.title.bold())
-                        Text(note.notes)
-                            .lineSpacing(4)
-                    }
+                    Text(selectedNote.title)
+                        .font(.title)
+                        .padding(.leading, 4)
+                        .padding(.top, 4)
+                    
+//                    Text(selectedNote.notes)
+                    TextEditor(text: $editedNotes)
+                        .foregroundColor(.white)
+                        
                     
                     Spacer()
                 }
                 .foregroundStyle(.white)
-                .padding(20)
+                .padding(8)
             }
             .alert("Delete book", isPresented: $deleteAlert) {
                 Button("Cancel",  role: .cancel, action: {})
@@ -85,7 +96,9 @@ struct SampleNotesView: View {
     }
 }
 
-#Preview {
-    SampleNotesView()
-        .environmentObject(NotesViewModel())
+struct SampleNotesView_Preview: PreviewProvider {
+    static var previews: some View {
+        let sampleNote = NotesModel(title: "Hello", notes: "Hello world")
+        SampleNotesView(selectedNote: sampleNote)
+    }
 }
